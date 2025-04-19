@@ -18,4 +18,4 @@ spec:
         - name: {{ .Values.component }}
           image: 058264090525.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.component }}:{{ .Values.image_tag }}
           ports:
-            - containerPort: 80
+            - containerPort: {{ .Values.container_port }}
