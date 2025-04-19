@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-service
+  name: {{ .Values.component }}
 spec:
-  type: LoadBalancer
+  type: {{ .Values.service_type }}
   selector:
-    app: frontend
+    app: {{ .Values.component }}
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
+      port: {{ .Values.port }}
+      targetPort: {{ .Values.target_port }}

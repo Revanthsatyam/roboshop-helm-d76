@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: frontend-deployment
   labels:
-    app: frontend
+    app: {{ .Values.component }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: frontend
+      app: {{ .Values.component }}
   template:
     metadata:
       labels:
-        app: frontend
+        app: {{ .Values.component }}
     spec:
       containers:
-        - name: {{ .Values.name }}
-          image: 058264090525.dkr.ecr.us-east-1.amazonaws.com/frontend:7
+        - name: {{ .Values.component }}
+          image: 058264090525.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.component }}:{{ .Values.image_tag }}
           ports:
             - containerPort: 80
