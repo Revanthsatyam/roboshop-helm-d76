@@ -26,7 +26,7 @@ pipeline {
           git branch: 'main', url: 'https://github.com/Revanthsatyam/${component}'
         }
         dir('CHART') {
-          git branch: 'main', url: 'https://github.com/Revanthsatyam/roboshop-helm'
+          git branch: 'main', url: 'https://github.com/Revanthsatyam/roboshop-helm-d76'
         }
       }
     }
