@@ -14,8 +14,25 @@ spec:
       labels:
         app: {{ .Values.component }}
     spec:
+      volumes:
+        - name: parameters-storage
+          emptyDir: {}
       containers:
         - name: {{ .Values.component }}
           image: 058264090525.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.component }}:{{ .Values.image_tag }}
+          imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.container_port }}
+          volumeMounts:
+            - name: parameters-storage
+              mountPath: /component/parameters
+      initContainers:
+        - name: "{{ .Values.component }}-parameters-container"
+          image: 058264090525.dkr.ecr.us-east-1.amazonaws.com/aws-ps-init-cont:4
+          imagePullPolicy: Always
+          env:
+            - name: PARAMETERS
+              value: {{ .Values.PARAMETERS }}
+          volumeMounts:
+            - name: parameters-storage
+              mountPath: /component/parameters
