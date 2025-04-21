@@ -28,7 +28,7 @@ spec:
             - name: parameters-storage
               mountPath: /parameters-storage
       initContainers:
-        - name: "{{ .Values.component }}-parameters-container"
+        - name: "{{ .Values.component }}-ps-cont"
           image: 058264090525.dkr.ecr.us-east-1.amazonaws.com/aws-ps-init-cont:15
           imagePullPolicy: Always
           env:
