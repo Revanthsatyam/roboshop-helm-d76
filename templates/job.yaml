@@ -8,6 +8,7 @@ metadata:
 spec:
   template:
     spec:
+      serviceAccountName: parameters-sa
       containers:
         - name: "{{ .Values.component }}-schema-cont"
           image: 058264090525.dkr.ecr.us-east-1.amazonaws.com/aws-schema-init-cont:2
