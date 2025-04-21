@@ -14,7 +14,7 @@ spec:
       labels:
         app: {{ .Values.component }}
     spec:
-      serviceAccountName: catalogue-sa
+      serviceAccountName: parameters-sa
       volumes:
         - name: parameters-storage
           emptyDir: {}
