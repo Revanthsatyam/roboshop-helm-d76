@@ -1,0 +1,21 @@
+{{- if .Values.schema_enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: "{{ .Values.component }}-schema-cont"
+  annotations:
+    "helm.sh/hook": pre-install
+spec:
+  template:
+    spec:
+      containers:
+        - name: "{{ .Values.component }}-schema-cont"
+          image: 058264090525.dkr.ecr.us-east-1.amazonaws.com/aws-schema-init-cont:2
+          env:
+            - name: schema_type
+              value: { { .Values.schema_type } }
+            - name: component
+              value: { { .Values.component } }
+      restartPolicy: Never
+  backoffLimit: 4
+{{- end }}
