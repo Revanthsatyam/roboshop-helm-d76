@@ -14,9 +14,9 @@ spec:
           image: 058264090525.dkr.ecr.us-east-1.amazonaws.com/aws-schema-init-cont:3
           env:
             - name: schema_type
-              value: "{ { .Values.schema_type } }"
+              value: "{{ .Values.schema_type }}"
             - name: component
-              value: "{ { .Values.component } }"
+              value: "{{ .Values.component }}"
       restartPolicy: Never
   backoffLimit: 4
 {{- end }}
