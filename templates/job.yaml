@@ -11,7 +11,7 @@ spec:
       serviceAccountName: parameters-sa
       containers:
         - name: "{{ .Values.component }}-schema-cont"
-          image: 058264090525.dkr.ecr.us-east-1.amazonaws.com/aws-schema-init-cont:6
+          image: 058264090525.dkr.ecr.us-east-1.amazonaws.com/aws-schema-init-cont:7
           env:
             - name: schema_type
               value: "{{ .Values.schema_type }}"
