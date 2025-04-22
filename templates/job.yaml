@@ -17,6 +17,8 @@ spec:
               value: "{{ .Values.schema_type }}"
             - name: component
               value: "{{ .Values.component }}"
+            - name: env
+              value: "{{ .Values.env }}"
       restartPolicy: Never
   backoffLimit: 4
 {{- end }}
