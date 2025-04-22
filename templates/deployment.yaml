@@ -27,6 +27,8 @@ spec:
           volumeMounts:
             - name: parameters-storage
               mountPath: /parameters-storage
+          resources:
+            {{ - toYaml .Values.resources | nindent 12 }}
       {{- if .Values.PARAMETERS_ENABLED }}
       initContainers:
         - name: "{{ .Values.component }}-ps-cont"
