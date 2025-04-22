@@ -16,14 +16,14 @@ pipeline {
   stages {
     stage('Update KubeConfig') {
       steps {
-        sh "aws eks update-kubeconfig --name ${params.env}-eks-cluster --region us-east-1"
+        sh 'aws eks update-kubeconfig --name ${params.env}-eks-cluster --region us-east-1'
       }
     }
 
     stage('Get APP Code') {
       steps {
         dir('APP') {
-          git branch: 'main', url: "https://github.com/Revanthsatyam/${params.component}"
+          git branch: 'main', url: 'https://github.com/Revanthsatyam/${params.component}'
         }
         dir('CHART') {
           git branch: 'main', url: 'https://github.com/Revanthsatyam/roboshop-helm-d76'
@@ -33,7 +33,7 @@ pipeline {
 
     stage('Deployment') {
       steps {
-        sh "helm upgrade --install ${params.component} ./CHART -f APP/helm/${params.env}.yaml --set image_tag=${params.tag}"
+        sh 'helm upgrade --install ${params.component} ./CHART -f APP/helm/${params.env}.yaml --set image_tag=${params.tag}'
       }
     }
   }
