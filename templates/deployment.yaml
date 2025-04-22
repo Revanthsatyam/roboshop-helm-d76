@@ -27,6 +27,7 @@ spec:
           volumeMounts:
             - name: parameters-storage
               mountPath: /parameters-storage
+      {{- if .Values.PARAMETERS_ENABLED }}
       initContainers:
         - name: "{{ .Values.component }}-ps-cont"
           image: 058264090525.dkr.ecr.us-east-1.amazonaws.com/aws-ps-init-cont:15
@@ -37,3 +38,4 @@ spec:
           volumeMounts:
             - name: parameters-storage
               mountPath: /parameters-storage
+      {{- end }}
