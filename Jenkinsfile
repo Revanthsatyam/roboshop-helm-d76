@@ -33,7 +33,7 @@ pipeline {
 
     stage('Deployment') {
       steps {
-        sh "helm upgrade --install ${params.component} ./CHART -f APP/helm/${params.env}.yaml --set image_tag=${tag}"
+        sh "helm upgrade --install ${params.component} ./CHART -f APP/helm/${params.env}.yaml --set image_tag=${params.tag}"
       }
     }
   }
