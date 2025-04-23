@@ -29,6 +29,14 @@ spec:
               mountPath: /parameters-storage
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: {{ .Values.container_port }}
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: {{ .Values.container_port }}
       {{- if .Values.PARAMETERS_ENABLED }}
       initContainers:
         - name: "{{ .Values.component }}-ps-cont"
