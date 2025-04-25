@@ -16,7 +16,7 @@ spec:
             - name: schema_type
               value: "{{ .Values.schema_type }}"
             - name: component
-              value: "{{ .Values.component }}"
+              value: "{{ .Values.component | trimSuffix "-stage" }}"
             - name: env
               value: "{{ .Values.env }}"
       restartPolicy: Never
