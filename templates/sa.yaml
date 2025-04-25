@@ -3,5 +3,5 @@ kind: ServiceAccount
 metadata:
   name: parameters-sa
   annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::058264090525:role/prod-eks-parameters-sa-role
+    eks.amazonaws.com/role-arn: "arn:aws:iam::058264090525:role/{{ .Values.env }}-eks-parameters-sa-role"
     "helm.sh/hook": pre-install
